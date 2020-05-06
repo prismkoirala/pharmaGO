@@ -1,0 +1,70 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+  <main>
+    <div class="container" style="min-height:70vh;margin-top:50px;">
+      <section class="mb-4">
+        <div class="row wow fadeIn" style="text-align:center;">
+          <div class='col-12 '>
+          <h1>Sign In to pharma<strong class="blue-text">GO</strong></h1>
+
+          {% get_providers as socialaccount_providers %}
+
+          {% if socialaccount_providers %}
+          <p>{% blocktrans with site.name as site_name %} Start shopping and save your time and money! <a href="{{ signup_url }}">sign up</a>
+          for a {{ site_name }} account <strong>OR</strong> sign in below:{% endblocktrans %}</p>
+
+          <div class="socialaccount_ballot" style="text-align:center;">
+
+            <span class="socialaccount_providers">
+              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+            </span>
+
+            <div class="login-or"><strong>{% trans 'OR' %}</strong></div>
+
+          </div>
+
+          {% include "socialaccount/snippets/login_extra.html" %}
+
+          {% else %}
+          <p>{% blocktrans %} Start shopping and save your time and money! <br/>If you have not created an account yet, then please
+          <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+          {% endif %}
+
+          <div style="text-align:center;">
+            <button class="btn btn-outline-blue" type="button" data-toggle="collapse" data-target="#collapseExample"
+              aria-expanded="false" aria-controls="collapseExample">
+              Login With pharmaGO
+            </button>
+          </div>
+          <!-- / Collapse buttons -->
+
+          <!-- Collapsible element -->
+          <div class="collapse" id="collapseExample">
+            <div class="mt-3">
+
+              <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form|crispy }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <a class="btn btn-outline-warning " href="{{ signup_url }}">{% trans "Create New Account" %}</a>
+                <button class="btn btn-outline-blue" type="submit">{% trans "Sign In" %}</button>
+              </form>
+
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+{% endblock %}

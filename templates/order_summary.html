@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <div class="container">
+
+    <div class="table-responsive text-nowrap">
+    <h2> <i class="fas fa-shopping-cart" style="padding:5px;margin:5px;"></i> Cart</h2>
+    <div class="list-group">
+      {% for order_item in object.items.all %}
+      <div class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="text-left">
+          <img src="{{ order_item.item.image.url }}" height=100>
+        </div>
+        <div class="d-flex justify-content-between">
+          <h5 class="mb-2 h5">{{order_item.item.title}}</h5>
+        </div>
+        <br/>
+
+        {% if order_item.item.discount_price %}
+            Rs.{{ order_item.get_total_discount_item_price }}
+            <span class="badge badge-primary">Saving Rs.{{ order_item.get_amount_saved }}</span>
+        {% else %}
+            Rs. {{ order_item.get_total_item_price }}
+        {% endif %}
+
+
+        <br />
+
+        <div class="float-right">
+          <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2 fa-2x"></i></a>
+            <b style="font-size:30px;">{{ order_item.quantity }}</b>
+          <a href="{% url 'core:add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2 fa-2x"></i></a>
+        </div>
+
+        <div style="margin-top:10px;">
+          <a style='color: red;' href="{% url 'core:remove-from-cart' order_item.item.slug %}">
+              <button class="btn btn-danger ">DELETE</button>
+          </a>
+        </div>
+
+
+      </div>
+
+      {% empty %}
+
+      <h1> empty </h1>
+
+      {% endfor %}
+
+    </div>
+
+    <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start blue white-text">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-2 h5">Order Summary</h5>
+      </div>
+
+      <h6 class="mb-2 h5">You Saved:
+        <strong><span class="badge badge-success ">Rs. {{ object.get_total_amount_saved }}</span></strong>
+      </h6>
+
+      <br />
+
+      {% if object.get_total %}
+      <h6 class="mb-2 h5">Total amount:
+        <strong> Rs. {{object.get_total}}</strong>
+      </h6>
+      {% endif %}
+
+    </a>
+
+    <a class='btn btn-outline-blue float-right ml-2' href='/checkout/'>Proceed to checkout</a>
+    <a class='btn btn-warning float-right' href='/'>Continue shopping</a>
+    </div>
+
+    </div>
+  </main>
+
+{% endblock content %}
