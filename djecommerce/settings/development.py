@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'pharmago.pythonanywhere.com']
 
 INSTALLED_APPS += [
     'debug_toolbar'
@@ -28,7 +28,7 @@ DEBUG_TOOLBAR_PANELS = [
 
 
 def show_toolbar(request):
-    return True
+    return False
 
 
 DEBUG_TOOLBAR_CONFIG = {

@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = True
 ALLOWED_HOSTS = ['ip-address', 'www.your-website.com']
 
 AUTH_PASSWORD_VALIDATORS = [
