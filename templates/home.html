@@ -5,22 +5,21 @@
   <main>
     <div class="container">
 
-      <div class="jumbotron card card-image"style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);" >
+      <div class="jumbotron card card-image"style="background-image: url(https://img.freepik.com/free-vector/realistic-smartphone-mockup-with-front-back_1017-19791.jpg?size=626&ext=jpg);" >
         <div class="text-white text-center py-5 px-4">
           <div>
-            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold black-text"><strong> pharmaceutical on the GO, <b class="white-text" style="text-weight:900;">pharma</b><b class="black-text"style="text-weight:900;">GO</b></strong></h2>
-            <h4 class=" mb-5">Get medical necessities on your door step within hours.
-            </h4>
+            <span class="card-title white h1-responsive p-1 font-bold black-text">fone<b class="red-text">cheap</b></span><br />
+            <span class="black p-1 mb-5">Buy smartphone, in a smart way.</span>
           </div>
         </div>
       </div>
 
 
       <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark light-blue accent-3 mdb-color  mt-3 mb-5">
+      <nav class="navbar navbar-expand-lg navbar-dark red accent-3 mdb-color  mt-3 mb-5">
 
         <!-- Navbar brand -->
-        <span class="navbar-brand">Categories:</span>
+        <span class="navbar-brand">We've got:</span>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -39,10 +38,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'core:babycare' %}">Baby Care</a>
+              <a class="nav-link" href="{% url 'core:babycare' %}">Samsung</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'core:capsule' %}">Capsules</a>
+              <a class="nav-link" href="{% url 'core:capsule' %}">Apple</a>
             </li>
 
           </ul>
@@ -58,9 +57,9 @@
       <!--Section: Products v.3-->
       <section class="text-center mb-4">
 
-        <form method="GET" action="{% url 'core:home' %}" class="form-inline d-flex justify-content-center md-form form-sm active-blue  mt-1">
+        <form method="GET" action="{% url 'core:home' %}" class="form-inline d-flex justify-content-center md-form form-sm active-red  mt-1">
           <i class="fas fa-search" aria-hidden="true"></i>
-          <input class="form-control form-control-sm ml-3 w-75" name='q' type="text" placeholder="Search all Products"
+          <input class="form-control form-control-sm ml-3 w-75" name='q' type="text" placeholder="What do you want?"
             aria-label="Search">
           </form>
 
