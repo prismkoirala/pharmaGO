@@ -17,10 +17,7 @@
      href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
      {% if provider.name == "Facebook" %}
 
-      <button class="btn btn-indigo">
-        <i class="fab fa-facebook-f"></i>
-        {{provider.name}} LOGIN
-      </button>
+      <span></span>
 
      {% else %}
      <button class="btn btn-danger"> <i class="fab fa-google"></i> {{provider.name}} LOGIN</button>
